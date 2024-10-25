@@ -67,6 +67,7 @@ Install dependencies:
 ```bash
 npm install
 ```
+
 ## Running the Project
 
 After installation, run the project locally:
