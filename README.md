@@ -30,3 +30,60 @@ root/
 │   ├── Utils/             # Utility functions and constants
 │   └── App.js             # Main app entry
 └── README.md              # Project documentation
+```
+
+## Scripts
+
+npm start: Runs the app in development mode.
+npm run build: Builds the app for production.
+npm run test: Runs tests.
+npm run lint: Checks code quality.
+
+## Packages Used
+
+React
+Material UI
+Joy UI
+React Router
+Redux Toolkit
+Typewriter-effect
+Axios
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/karthikeya-bhamidipati/PorfolioProject.git
+```
+Navigate to the project directory:
+
+```bash
+cd PorfolioProject
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+## Running the Project
+
+After installation, run the project locally:
+
+```bash
+npm start
+```
+
+## Functionality Overview
+
+Home Page: Personalized greeting with a resume download button.
+Profile Page: Links to social profiles.
+Projects Page: Grid of personal projects with descriptions.
+Academics Page: Timeline of educational background.
+404 Page: Custom error page with user data fetch.
+
+## Additional Requirements
+
+Ensure Node.js and npm are installed.
+Place your resume (Karthikeya_Bhamidipati_Resume.pdf) in the public directory for download functionality.
