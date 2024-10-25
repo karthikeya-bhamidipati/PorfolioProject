@@ -6,16 +6,15 @@ This is a portfolio website built using React, Material UI, and Joy UI. It showc
 
 1. [Project Overview](#project-overview)
 2. [Directory Structure](#directory-structure)
-3. [Scripts](#scripts)
+3. [Functionality Overview](#functionality-overview)
 4. [Packages Used](#packages-used)
-5. [Installation](#installation)
-6. [Running the Project](#running-the-project)
-7. [Functionality Overview](#functionality-overview)
-8. [Additional Requirements](#additional-requirements)
+5. [Scripts](#scripts)
+6. [Installation](#installation)
+7. [Running the Project](#running-the-project)
 
 ## Project Overview
 
-A responsive portfolio website showcasing projects, social links, and an academic timeline.
+A portfolio website showcasing projects, social links, and an academic timeline.
 
 ## Directory Structure
 
@@ -62,41 +61,65 @@ root/
 └── README.md
 ```
 
+## Functionality Overview
+
+### Home Page
+
+- Personalized greeting
+- Resume download button
+
+### Profile Page
+
+- Links to social profiles
+
+### Projects Page
+
+- Grid of personal projects with descriptions
+
+### Academics Page
+
+- Timeline of educational background
+
+### 404 Page
+
+- Custom error page
+- User data fetch
+
+## Packages Used
+
+- React
+- Material UI
+- Joy UI
+- React Router
+- Redux Toolkit
+- Typewriter-effect
+-Axios
+
 ## Scripts
+
+Runs the app in development mode
 
 ```bash
 npm start
 ```
 
-Runs the app in development mode
+Builds the app for production
 
 ```bash
 npm run build
 ```
 
-Builds the app for production
+Runs tests
 
 ```bash
 npm run test
 ```
 
-Runs tests
+Checks code quality
 
 ```bash
 npm run lint
 ```
-
-Checks code quality
-
-## Packages Used
-
-React
-Material UI
-Joy UI
-React Router
-Redux Toolkit
-Typewriter-effect
-Axios
 
 ## Installation
 
@@ -125,16 +148,3 @@ After installation, run the project locally:
 ```bash
 npm start
 ```
-
-## Functionality Overview
-
-Home Page: Personalized greeting with a resume download button.
-Profile Page: Links to social profiles.
-Projects Page: Grid of personal projects with descriptions.
-Academics Page: Timeline of educational background.
-404 Page: Custom error page with user data fetch.
-
-## Additional Requirements
-
-Ensure Node.js and npm are installed.
-Place your resume (Karthikeya_Bhamidipati_Resume.pdf) in the public directory for download functionality.
