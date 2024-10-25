@@ -64,29 +64,39 @@ root/
 
 ## Scripts
 
-### npm start: Runs the app in development mode
+```bash
+npm start
+```
 
-### npm run build: Builds the app for production
+Runs the app in development mode
 
-### npm run test: Runs tests
+```bash
+npm run build
+```
 
-### npm run lint: Checks code quality
+Builds the app for production
+
+```bash
+npm run test
+```
+
+Runs tests
+
+```bash
+npm run lint
+```
+
+Checks code quality
 
 ## Packages Used
 
-### React
-
-### Material UI
-
-### Joy UI
-
-### React Router
-
-### Redux Toolkit
-
-### Typewriter-effect
-
-### Axios
+React
+Material UI
+Joy UI
+React Router
+Redux Toolkit
+Typewriter-effect
+Axios
 
 ## Installation
 
