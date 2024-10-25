@@ -1,12 +1,32 @@
-# PORTFOLIO PROJECT
+# Portfolio Project
 
-The following project is built using React and Express
+This is a portfolio website built using React, Material UI, and Joy UI. It showcases personal projects, social profiles, academic background, and a downloadable resume.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+1. [Project Overview](#project-overview)
+2. [Directory Structure](#directory-structure)
+3. [Scripts](#scripts)
+4. [Packages Used](#packages-used)
+5. [Installation](#installation)
+6. [Running the Project](#running-the-project)
+7. [Functionality Overview](#functionality-overview)
+8. [Additional Requirements](#additional-requirements)
 
-### `npm start`
+## Project Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+A responsive portfolio website showcasing projects, social links, and an academic timeline.
+
+## Directory Structure
+
+```bash
+root/
+│
+├── public/                # Public static assets
+├── src/                   # Source code
+│   ├── components/        # React components
+│   ├── redux/             # Redux slices and store
+│   ├── resources/         # CSS, images, assets
+│   ├── Utils/             # Utility functions and constants
+│   └── App.js             # Main app entry
+└── README.md              # Project documentation

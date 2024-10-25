@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import '../resources/css/shared.css'
 
 export default function PageNotFound() {
     const [UserData, setUserData] = useState(null)
@@ -26,6 +27,10 @@ export default function PageNotFound() {
             </div>
         )
     } else {
-        return <div className="loading">Loading...........</div>
+        return (
+            <div style={{ textAlign: 'center', color: 'white' }}>
+                <h1>Loading...........</h1>
+            </div>
+        )
     }
 }
