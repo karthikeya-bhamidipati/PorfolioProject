@@ -180,7 +180,7 @@ export const PROJECTS_DATA = [
         links: [
             {
                 name: 'GitHub',
-                link: 'https://github.com/karthikeya-bhamidipati/HSBC_c-plusplus_MiniProject',
+                link: 'https://github.com/karthikeya-bhamidipati/HSBC_MiniProject',
             },
         ],
         description:
