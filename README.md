@@ -22,32 +22,71 @@ A responsive portfolio website showcasing projects, social links, and an academi
 ```bash
 root/
 │
-├── public/                # Public static assets
-├── src/                   # Source code
-│   ├── components/        # React components
-│   ├── redux/             # Redux slices and store
-│   ├── resources/         # CSS, images, assets
-│   ├── Utils/             # Utility functions and constants
-│   └── App.js             # Main app entry
-└── README.md              # Project documentation
+├── public/
+│   ├── index.html
+│   ├── Karthikeya_Bhamidipati_Resume.pdf
+│   ├── LOGO.jpeg
+│   ├── manifest.json
+│   └── robots.txt
+├── src/
+│   ├── components/
+│   │   ├── Academics.jsx
+│   │   ├── Dashbord.jsx
+│   │   ├── Home.jsx
+│   │   ├── PageNotFound.jsx
+│   │   ├── Profile.jsx
+│   │   └── Projects.jsx
+│   ├── redux/
+│   │   ├── slices/
+│   │   │   └── navSlice.js
+│   │   └── store.js
+│   ├── resources/
+│   │   ├── css/
+│   │   │   ├── academics.css
+│   │   │   ├── dashbord.css
+│   │   │   ├── home.css
+│   │   │   ├── profile.css
+│   │   │   ├── projects.css
+│   │   │   └── shared.css
+│   │   └── images/
+│   │       └── projects/
+│   ├── Utils/
+│   │   └── Constants.js
+│   ├── App.css
+│   ├── App.js
+│   ├── index.css
+│   └── index.js
+├── .gitignore
+├── package-lock.json
+├── pakage.json
+└── README.md
 ```
 
 ## Scripts
 
-npm start: Runs the app in development mode.
-npm run build: Builds the app for production.
-npm run test: Runs tests.
-npm run lint: Checks code quality.
+### npm start: Runs the app in development mode
+
+### npm run build: Builds the app for production
+
+### npm run test: Runs tests
+
+### npm run lint: Checks code quality
 
 ## Packages Used
 
-React
-Material UI
-Joy UI
-React Router
-Redux Toolkit
-Typewriter-effect
-Axios
+### React
+
+### Material UI
+
+### Joy UI
+
+### React Router
+
+### Redux Toolkit
+
+### Typewriter-effect
+
+### Axios
 
 ## Installation
 
