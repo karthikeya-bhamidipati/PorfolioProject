@@ -56,6 +56,7 @@ Clone the repository:
 ```bash
 git clone https://github.com/karthikeya-bhamidipati/PorfolioProject.git
 ```
+
 Navigate to the project directory:
 
 ```bash
