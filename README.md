@@ -14,7 +14,7 @@ This is a portfolio website built using React, Material UI, and Joy UI. It showc
 
 ## Project Overview
 
-A portfolio website showcasing projects, social links, and an academic timeline.
+A portfolio website showcasing projects, social links, and an academic timeline. used redux to maintain state of the bottom navigation, also used localstorage to store the selected in the bottom navigation. Customized all the used MUI and JoyUI components using the sx property. Used Typewriter-effect in the home page. used react router dom for routing the pages. Used Axios to featch data from backend.(only in the PageNotFound page data is featched to understand the concept remaining all the pages uses the data from the Constants.js file in the Utils folder)
 
 ## Directory Structure
 
@@ -74,7 +74,7 @@ root/
 
 ### Projects Page
 
-- Grid of personal projects with descriptions
+- Grid of personal projects with descriptions and links
 
 ### Academics Page
 
@@ -83,7 +83,7 @@ root/
 ### 404 Page
 
 - Custom error page
-- User data fetch
+- User data fetch (for learning express)
 
 ## Packages Used
 
@@ -93,7 +93,7 @@ root/
 - React Router
 - Redux Toolkit
 - Typewriter-effect
--Axios
+- Axios
 
 ## Scripts
 
