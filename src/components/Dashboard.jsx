@@ -8,7 +8,7 @@ import {
 } from '@mui/material'
 
 // Constants imports
-import { DEFAULT_SIDE_MENU, userProfileDefaultData } from '../Utils/Constants'
+import { DEFAULT_SIDE_MENU } from '../Utils/Constants'
 
 // Routing imports
 import { Link, Route, Routes } from 'react-router-dom'
@@ -49,7 +49,7 @@ export default function Dashboard() {
             setActiveBottomNavigation({ ActiveBottomNavigation: newValue })
         )
     }
-    
+
     useEffect(() => {
         // Store a session timestamp to detect reloads
         sessionStorage.setItem('isPageReloaded', 'false')
