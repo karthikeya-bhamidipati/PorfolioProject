@@ -49,24 +49,7 @@ export default function Dashboard() {
             setActiveBottomNavigation({ ActiveBottomNavigation: newValue })
         )
     }
-
-    useEffect(() => {
-        const handleVisibilityChange = () => {
-            if (document.visibilityState === 'hidden') {
-                document.title = 'Come back!! 😢'.toUpperCase()
-            } else {
-                document.title = userProfileDefaultData.Name.toUpperCase()
-            }
-        }
-        document.addEventListener('visibilitychange', handleVisibilityChange)
-        return () => {
-            document.removeEventListener(
-                'visibilitychange',
-                handleVisibilityChange
-            )
-        }
-    }, [])
-
+    
     useEffect(() => {
         // Store a session timestamp to detect reloads
         sessionStorage.setItem('isPageReloaded', 'false')

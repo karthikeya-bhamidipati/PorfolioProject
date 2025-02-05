@@ -186,4 +186,17 @@ export const PROJECTS_DATA = [
         description:
             'Developed a C++ command-line application using file handling techniques to manage financial transactions. The app functions with a file-based database to store and retrieve user data and transaction histories. Key features include user moderation with role-based access for admins and different departments. Each user is authenticated via password-protected logins, ensuring security and proper access control.',
     },
+    {
+        image: Project3,
+        avatar: [reactIcon],
+        name: 'CONTRLZ',
+        links: [
+            {
+                name: 'GitHub',
+                link: 'https://github.com/karthikeya-bhamidipati/controlz',
+            },
+        ],
+        description:
+            'CONTRLZ is an IoT-based home automation system that enables users to control and monitor electrical appliances remotely via a web app. Built using React, Material UI, and Firebase, the system integrates with a WeMos D1 Mini microcontroller and relay modules to toggle appliances ON/OFF, schedule operations, and provide real-time status updates. It features manual override, dark mode support, and a responsive UI for seamless user experience. With cloud connectivity, data logging, and security measures, CONTRLZ is designed for efficiency, scalability, and ease of use, making smart home automation more accessible.',
+    },
 ]
