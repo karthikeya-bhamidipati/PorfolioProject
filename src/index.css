@@ -1,6 +1,9 @@
 * {
     margin: 0;
-    font-family: sans-serif, Arial, Helvetica;
+    font-family: Arial, Helvetica;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+::-webkit-scrollbar {
+    width: 0;
 }
