@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
 import { motion } from 'framer-motion';
-import { about } from '../Utils/masterData';
+import { career_objectives } from '../Utils/masterData';
 import Terminal from './Terminal';
 
 export default function About() {
@@ -38,7 +38,7 @@ export default function About() {
                             The Story
                         </Typography>
                         <Typography variant="body1" sx={{ color: 'var(--text-secondary)', lineHeight: 1.8, fontSize: { xs: '1rem', md: '1.1rem' }, fontWeight: 300 }}>
-                            {about}
+                            {career_objectives}
                         </Typography>
                     </Box>
 
