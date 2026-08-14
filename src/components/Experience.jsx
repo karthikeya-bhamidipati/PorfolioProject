@@ -1,57 +1,76 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
-import { Timeline, TimelineItem, TimelineSeparator, TimelineConnector, TimelineContent, TimelineDot } from '@mui/lab';
+import { Box, Typography, Paper } from '@mui/material';
+import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 import { motion } from 'framer-motion';
 import { experience } from '../Utils/masterData';
 
 export default function Experience() {
+    // Assuming there's only one experience based on the data, 
+    // we make it a prominent feature card rather than an empty timeline.
+    const exp = experience[0];
+
     return (
-        <Box id="experience" component="section" sx={{ padding: { xs: 3, md: 8 }, minHeight: '60vh' }}>
-            <Box sx={{ maxWidth: 1000, margin: '0 auto' }}>
+        <Box id="experience" component="section" sx={{ padding: { xs: 3, md: 8 }, minHeight: '60vh', display: 'flex', alignItems: 'center' }}>
+            <Box sx={{ maxWidth: 1000, margin: '0 auto', width: '100%' }}>
                 <Typography variant="h3" sx={{ fontWeight: 700, mb: 6, color: 'var(--highlightText)', textAlign: 'center', fontSize: { xs: '2rem', md: '3rem' } }}>
                     Experience
                 </Typography>
                 
-                <Timeline position="right" sx={{ p: 0, '& .MuiTimelineItem-root:before': { flex: { xs: 0, md: 1 }, padding: { xs: 0, md: '18px' } } }}>
-                    {experience.map((exp, index) => (
-                        <TimelineItem key={index}>
-                            <TimelineSeparator>
-                                <TimelineDot sx={{ backgroundColor: 'var(--highlightText)' }} />
-                                {index < experience.length - 1 && <TimelineConnector sx={{ backgroundColor: 'var(--glass-border)' }} />}
-                            </TimelineSeparator>
-                            <TimelineContent sx={{ py: '12px', px: { xs: 1.5, md: 2 } }}>
-                                <Box
-                                    component={motion.div}
-                                    initial={{ opacity: 0, x: 50 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.5, delay: index * 0.2 }}
-                                    sx={{
-                                        background: 'var(--glass-bg)',
-                                        backdropFilter: 'blur(10px)',
-                                        border: '1px solid var(--glass-border)',
-                                        borderRadius: 3,
-                                        padding: { xs: 2.5, md: 4 },
-                                        boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
-                                    }}
-                                >
-                                    <Typography variant="h5" component="span" sx={{ fontWeight: 600, color: 'var(--text-primary)', fontSize: { xs: '1.2rem', md: '1.5rem' } }}>
-                                        {exp.title}
-                                    </Typography>
-                                    <Typography variant="h6" sx={{ color: 'var(--highlightText)', mt: 1, fontSize: { xs: '1rem', md: '1.1rem' } }}>
-                                        {exp.company}
-                                    </Typography>
-                                    <Typography variant="body2" sx={{ color: 'var(--text-secondary)', mb: 2, fontStyle: 'italic' }}>
-                                        {exp.duration}
-                                    </Typography>
-                                    <Typography variant="body1" sx={{ color: 'var(--text-secondary)', lineHeight: 1.7, fontWeight: 300, fontSize: { xs: '0.9rem', md: '1rem' } }}>
-                                        {exp.description}
-                                    </Typography>
-                                </Box>
-                            </TimelineContent>
-                        </TimelineItem>
-                    ))}
-                </Timeline>
+                <Paper
+                    component={motion.div}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    sx={{
+                        background: 'var(--glass-bg)',
+                        backdropFilter: 'blur(15px)',
+                        border: '1px solid var(--glass-border)',
+                        borderRadius: 4,
+                        padding: { xs: 4, md: 6 },
+                        boxShadow: '0 10px 40px rgba(0,0,0,0.4)',
+                        position: 'relative',
+                        overflow: 'hidden',
+                        '&::before': {
+                            content: '""',
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            width: '100%',
+                            height: '4px',
+                            background: 'linear-gradient(90deg, transparent, var(--highlightText), transparent)'
+                        }
+                    }}
+                >
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
+                        <Box sx={{ 
+                            backgroundColor: 'rgba(241, 109, 21, 0.1)', 
+                            p: 2, 
+                            borderRadius: '50%',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                        }}>
+                            <WorkOutlineIcon sx={{ color: 'var(--highlightText)', fontSize: '2.5rem' }} />
+                        </Box>
+                        <Box>
+                            <Typography variant="h4" sx={{ fontWeight: 700, color: 'var(--text-primary)', fontSize: { xs: '1.5rem', md: '2rem' } }}>
+                                {exp.title}
+                            </Typography>
+                            <Typography variant="h6" sx={{ color: 'var(--highlightText)', mt: 0.5, fontWeight: 500 }}>
+                                {exp.company}
+                            </Typography>
+                        </Box>
+                    </Box>
+                    
+                    <Typography variant="subtitle1" sx={{ color: 'var(--text-secondary)', mb: 4, fontStyle: 'italic', borderBottom: '1px solid var(--glass-border)', pb: 2, display: 'inline-block' }}>
+                        {exp.duration}
+                    </Typography>
+                    
+                    <Typography variant="body1" sx={{ color: 'var(--text-secondary)', lineHeight: 1.8, fontSize: { xs: '1rem', md: '1.1rem' }, fontWeight: 300 }}>
+                        {exp.description}
+                    </Typography>
+                </Paper>
             </Box>
         </Box>
     );

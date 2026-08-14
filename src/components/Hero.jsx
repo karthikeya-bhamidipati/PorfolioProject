@@ -74,7 +74,7 @@ export default function Hero() {
                             fontSize: { xs: '2.2rem', sm: '3.5rem', md: '4.5rem' },
                             fontWeight: 800,
                             lineHeight: 1.1,
-                            background: 'linear-gradient(45deg, #fff, var(--highlightText))',
+                            background: 'linear-gradient(45deg, #444, var(--highlightText))',
                             WebkitBackgroundClip: 'text',
                             WebkitTextFillColor: 'transparent',
                         }}
@@ -82,21 +82,20 @@ export default function Hero() {
                         {personal_information.name}
                     </Typography>
 
-                    <Typography
-                        variant="h5"
+                    <Box
                         sx={{ 
-                            fontSize: { xs: '1rem', sm: '1.5rem', md: '2rem' }, 
-                            fontWeight: 400, 
                             mt: 1, 
                             display: 'flex', 
-                            flexWrap: { xs: 'wrap', md: 'nowrap' }, 
-                            justifyContent: {xs: 'center', md: 'flex-start'}, 
+                            flexDirection: { xs: 'column', sm: 'row' }, 
+                            alignItems: { xs: 'center', md: 'flex-start' },
                             gap: 1,
                             width: '100%'
                         }}
                     >
-                        AND I AM INTO
-                        <Box component="span" sx={{ color: 'var(--highlightText)', fontWeight: 600, whiteSpace: 'nowrap' }}>
+                        <Typography variant="h5" sx={{ fontSize: { xs: '1rem', sm: '1.5rem', md: '2rem' }, fontWeight: 400 }}>
+                            AND I AM INTO
+                        </Typography>
+                        <Typography variant="h5" sx={{ fontSize: { xs: '1.2rem', sm: '1.5rem', md: '2rem' }, color: 'var(--highlightText)', fontWeight: 600 }}>
                             <Typewriter
                                 options={{
                                     strings: IntrestedSubjects,
@@ -106,8 +105,8 @@ export default function Hero() {
                                     delay: 80
                                 }}
                             />
-                        </Box>
-                    </Typography>
+                        </Typography>
+                    </Box>
 
                     <Button
                         variant="contained"

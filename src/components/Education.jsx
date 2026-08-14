@@ -1,10 +1,13 @@
 import React from 'react';
-import { Box, Typography, Avatar } from '@mui/material';
+import { Box, Typography, Avatar, useMediaQuery, useTheme } from '@mui/material';
 import { Timeline, TimelineItem, TimelineSeparator, TimelineConnector, TimelineContent, TimelineDot } from '@mui/lab';
 import { motion } from 'framer-motion';
 import { education } from '../Utils/masterData';
 
 export default function Education() {
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+
     return (
         <Box id="education" component="section" sx={{ padding: { xs: 3, md: 8 }, minHeight: '80vh' }}>
             <Box sx={{ maxWidth: 1000, margin: '0 auto' }}>
@@ -12,7 +15,7 @@ export default function Education() {
                     Education
                 </Typography>
                 
-                <Timeline position="right" sx={{ p: 0, '& .MuiTimelineItem-root:before': { flex: { xs: 0, md: 1 }, padding: { xs: 0, md: '18px' } } }}>
+                <Timeline position={isMobile ? "right" : "alternate"} sx={{ p: 0, ...(isMobile && { '& .MuiTimelineItem-root:before': { flex: 0, padding: 0 } }) }}>
                     {education.map((edu, index) => (
                         <TimelineItem key={index}>
                             <TimelineSeparator>
@@ -21,7 +24,7 @@ export default function Education() {
                                 </TimelineDot>
                                 {index < education.length - 1 && <TimelineConnector sx={{ backgroundColor: 'var(--glass-border)' }} />}
                             </TimelineSeparator>
-                            <TimelineContent sx={{ py: '12px', px: { xs: 1.5, md: 2 } }}>
+                            <TimelineContent sx={{ py: '12px', px: { xs: 1.5, md: 3 } }}>
                                 <Box
                                     component={motion.div}
                                     initial={{ opacity: 0, y: 30 }}
@@ -35,6 +38,7 @@ export default function Education() {
                                         borderRadius: 3,
                                         padding: { xs: 2.5, md: 4 },
                                         boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
+                                        textAlign: 'left'
                                     }}
                                 >
                                     <Typography variant="h5" sx={{ fontWeight: 600, color: 'var(--text-primary)', fontSize: { xs: '1.2rem', md: '1.5rem' } }}>
@@ -43,7 +47,7 @@ export default function Education() {
                                     <Typography variant="h6" sx={{ color: 'var(--highlightText)', mt: 1, fontSize: { xs: '1rem', md: '1.1rem' } }}>
                                         {edu.institution}
                                     </Typography>
-                                    <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 1, mb: 1, flexWrap: 'wrap' }}>
+                                    <Box sx={{ display: 'flex', flexDirection: 'column', mt: 1, mb: 1 }}>
                                         <Typography variant="body2" sx={{ color: 'var(--text-secondary)' }}>
                                             Score: {edu.score}
                                         </Typography>
