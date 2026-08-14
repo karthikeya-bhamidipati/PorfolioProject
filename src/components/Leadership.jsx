@@ -36,6 +36,9 @@ export default function Leadership() {
                                     border: '1px solid var(--glass-border)',
                                     borderRadius: 4,
                                     p: 4,
+                                    height: '100%',
+                                    display: 'flex',
+                                    flexDirection: 'column',
                                     boxShadow: '0 8px 30px rgba(0,0,0,0.3)',
                                 }}
                             >
@@ -62,7 +65,7 @@ export default function Leadership() {
                         display: 'grid', 
                         gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' }, 
                         gap: 3,
-                        gridAutoRows: 'minmax(150px, auto)'
+                        gridAutoRows: '1fr'
                     }}>
                         {leadership_and_activities.map((activity, index) => (
                             <Paper
@@ -73,21 +76,19 @@ export default function Leadership() {
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.4, delay: index * 0.05 }}
                                 sx={{
-                                    background: index % 3 === 0 
-                                        ? 'linear-gradient(135deg, rgba(241,109,21,0.1) 0%, rgba(36,36,36,0.8) 100%)' 
-                                        : 'var(--glass-bg)',
+                                    background: 'var(--glass-bg)',
                                     backdropFilter: 'blur(10px)',
                                     border: '1px solid var(--glass-border)',
-                                    borderTop: index % 3 === 0 ? '2px solid var(--highlightText)' : '1px solid var(--glass-border)',
                                     padding: 3,
                                     borderRadius: 4,
                                     display: 'flex',
                                     flexDirection: 'column',
-                                    justifyContent: 'center',
+                                    height: '100%',
                                     transition: 'transform 0.3s',
                                     '&:hover': {
                                         transform: 'translateY(-5px)',
-                                        boxShadow: '0 10px 25px rgba(241, 109, 21, 0.15)'
+                                        boxShadow: '0 10px 25px rgba(241, 109, 21, 0.15)',
+                                        borderColor: 'rgba(241, 109, 21, 0.4)',
                                     }
                                 }}
                             >

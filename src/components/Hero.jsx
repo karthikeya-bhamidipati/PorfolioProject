@@ -64,7 +64,7 @@ export default function Hero() {
                         width: '100%'
                     }}
                 >
-                    <Typography variant="h6" sx={{ color: 'var(--text-secondary)', fontWeight: 300, letterSpacing: 2, fontSize: { xs: '1rem', md: '1.25rem' } }}>
+                    <Typography variant="h6" sx={{ color: 'var(--text-secondary)', fontWeight: 500, letterSpacing: 3, fontSize: { xs: '1.2rem', md: '1.5rem' } }}>
                         HELLO THERE, I AM
                     </Typography>
                     
@@ -74,7 +74,7 @@ export default function Hero() {
                             fontSize: { xs: '2.2rem', sm: '3.5rem', md: '4.5rem' },
                             fontWeight: 800,
                             lineHeight: 1.1,
-                            background: 'linear-gradient(45deg, #444, var(--highlightText))',
+                            background: 'linear-gradient(45deg, #fff, var(--highlightText))',
                             WebkitBackgroundClip: 'text',
                             WebkitTextFillColor: 'transparent',
                         }}
@@ -82,20 +82,29 @@ export default function Hero() {
                         {personal_information.name}
                     </Typography>
 
-                    <Box
+                    <Typography
+                        variant="h5"
                         sx={{ 
+                            fontSize: { xs: '1.1rem', sm: '1.5rem', md: '2rem' }, 
+                            fontWeight: 400, 
                             mt: 1, 
                             display: 'flex', 
-                            flexDirection: { xs: 'column', sm: 'row' }, 
-                            alignItems: { xs: 'center', md: 'flex-start' },
+                            flexWrap: { xs: 'wrap', md: 'nowrap' }, 
+                            justifyContent: {xs: 'center', md: 'flex-start'}, 
+                            alignItems: 'center',
                             gap: 1,
                             width: '100%'
                         }}
                     >
-                        <Typography variant="h5" sx={{ fontSize: { xs: '1rem', sm: '1.5rem', md: '2rem' }, fontWeight: 400 }}>
-                            AND I AM INTO
-                        </Typography>
-                        <Typography variant="h5" sx={{ fontSize: { xs: '1.2rem', sm: '1.5rem', md: '2rem' }, color: 'var(--highlightText)', fontWeight: 600 }}>
+                        AND I AM INTO
+                        <Box component="span" sx={{ 
+                            color: 'var(--highlightText)', 
+                            fontWeight: 600, 
+                            whiteSpace: 'nowrap',
+                            display: 'inline-block',
+                            minWidth: { xs: '200px', sm: '300px', md: '400px' }, // Fixed width prevents layout shift
+                            textAlign: 'left'
+                        }}>
                             <Typewriter
                                 options={{
                                     strings: IntrestedSubjects,
@@ -105,8 +114,8 @@ export default function Hero() {
                                     delay: 80
                                 }}
                             />
-                        </Typography>
-                    </Box>
+                        </Box>
+                    </Typography>
 
                     <Button
                         variant="contained"

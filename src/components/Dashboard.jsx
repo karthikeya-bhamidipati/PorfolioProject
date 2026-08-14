@@ -4,6 +4,7 @@ import { Box } from '@mui/material';
 // importing components
 import Navbar from './Navbar';
 import Hero from './Hero';
+import Terminal from './Terminal';
 import About from './About';
 import Experience from './Experience';
 import Education from './Education';
@@ -45,6 +46,7 @@ export default function Dashboard() {
         <Box sx={{ width: '100%', minHeight: '100vh' }}>
             <Navbar />
             <Hero />
+            <Terminal />
             <About />
             <Experience />
             <Education />
