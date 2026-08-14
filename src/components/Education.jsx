@@ -8,11 +8,11 @@ export default function Education() {
     return (
         <Box id="education" component="section" sx={{ padding: { xs: 3, md: 8 }, minHeight: '80vh' }}>
             <Box sx={{ maxWidth: 1000, margin: '0 auto' }}>
-                <Typography variant="h3" sx={{ fontWeight: 700, mb: 6, color: 'var(--highlightText)', textAlign: 'center' }}>
+                <Typography variant="h3" sx={{ fontWeight: 700, mb: 6, color: 'var(--highlightText)', textAlign: 'center', fontSize: { xs: '2rem', md: '3rem' } }}>
                     Education
                 </Typography>
                 
-                <Timeline position="right" sx={{ p: 0 }}>
+                <Timeline position="right" sx={{ p: 0, '& .MuiTimelineItem-root:before': { flex: { xs: 0, md: 1 }, padding: { xs: 0, md: '18px' } } }}>
                     {education.map((edu, index) => (
                         <TimelineItem key={index}>
                             <TimelineSeparator>
@@ -21,7 +21,7 @@ export default function Education() {
                                 </TimelineDot>
                                 {index < education.length - 1 && <TimelineConnector sx={{ backgroundColor: 'var(--glass-border)' }} />}
                             </TimelineSeparator>
-                            <TimelineContent sx={{ py: '12px', px: 2 }}>
+                            <TimelineContent sx={{ py: '12px', px: { xs: 1.5, md: 2 } }}>
                                 <Box
                                     component={motion.div}
                                     initial={{ opacity: 0, y: 30 }}
@@ -33,14 +33,14 @@ export default function Education() {
                                         backdropFilter: 'blur(10px)',
                                         border: '1px solid var(--glass-border)',
                                         borderRadius: 3,
-                                        padding: 3,
+                                        padding: { xs: 2.5, md: 4 },
                                         boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
                                     }}
                                 >
-                                    <Typography variant="h5" sx={{ fontWeight: 600, color: 'var(--text-primary)' }}>
+                                    <Typography variant="h5" sx={{ fontWeight: 600, color: 'var(--text-primary)', fontSize: { xs: '1.2rem', md: '1.5rem' } }}>
                                         {edu.degree}
                                     </Typography>
-                                    <Typography variant="h6" sx={{ color: 'var(--highlightText)', mt: 1, fontSize: '1.1rem' }}>
+                                    <Typography variant="h6" sx={{ color: 'var(--highlightText)', mt: 1, fontSize: { xs: '1rem', md: '1.1rem' } }}>
                                         {edu.institution}
                                     </Typography>
                                     <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 1, mb: 1, flexWrap: 'wrap' }}>
@@ -52,7 +52,7 @@ export default function Education() {
                                         </Typography>
                                     </Box>
                                     {edu.relevant_coursework && (
-                                        <Typography variant="body2" sx={{ color: 'var(--text-secondary)', mt: 1, fontWeight: 300 }}>
+                                        <Typography variant="body2" sx={{ color: 'var(--text-secondary)', mt: 1, fontWeight: 300, fontSize: { xs: '0.9rem', md: '1rem' } }}>
                                             <span style={{ color: 'var(--highlightText)', fontWeight: 500 }}>Relevant Coursework:</span> {edu.relevant_coursework}
                                         </Typography>
                                     )}

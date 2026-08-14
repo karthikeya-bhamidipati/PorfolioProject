@@ -34,7 +34,8 @@ export default function Hero() {
                 justifyContent: 'center',
                 alignItems: 'center',
                 padding: { xs: 2, md: 8 },
-                pt: { xs: 10, md: 10 }
+                pt: { xs: 12, md: 10 },
+                overflow: 'hidden'
             }}
         >
             <Box
@@ -43,7 +44,7 @@ export default function Hero() {
                     flexDirection: { xs: 'column-reverse', md: 'row' },
                     alignItems: 'center',
                     justifyContent: 'space-between',
-                    gap: { xs: 6, md: 8 },
+                    gap: { xs: 4, md: 8 },
                     width: '100%',
                     maxWidth: 1200,
                 }}
@@ -59,17 +60,18 @@ export default function Hero() {
                         alignItems: { xs: 'center', md: 'flex-start' },
                         textAlign: { xs: 'center', md: 'left' },
                         gap: 2,
-                        flex: 1
+                        flex: 1,
+                        width: '100%'
                     }}
                 >
-                    <Typography variant="h6" sx={{ color: 'var(--text-secondary)', fontWeight: 300, letterSpacing: 2 }}>
+                    <Typography variant="h6" sx={{ color: 'var(--text-secondary)', fontWeight: 300, letterSpacing: 2, fontSize: { xs: '1rem', md: '1.25rem' } }}>
                         HELLO THERE, I AM
                     </Typography>
                     
                     <Typography
                         variant="h2"
                         sx={{
-                            fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4.5rem' },
+                            fontSize: { xs: '2.2rem', sm: '3.5rem', md: '4.5rem' },
                             fontWeight: 800,
                             lineHeight: 1.1,
                             background: 'linear-gradient(45deg, #fff, var(--highlightText))',
@@ -82,10 +84,19 @@ export default function Hero() {
 
                     <Typography
                         variant="h5"
-                        sx={{ fontSize: { xs: '1.2rem', sm: '1.5rem', md: '2rem' }, fontWeight: 400, mt: 1, display: 'flex', flexWrap: 'wrap', justifyContent: {xs: 'center', md: 'flex-start'}, gap: 1 }}
+                        sx={{ 
+                            fontSize: { xs: '1rem', sm: '1.5rem', md: '2rem' }, 
+                            fontWeight: 400, 
+                            mt: 1, 
+                            display: 'flex', 
+                            flexWrap: { xs: 'wrap', md: 'nowrap' }, 
+                            justifyContent: {xs: 'center', md: 'flex-start'}, 
+                            gap: 1,
+                            width: '100%'
+                        }}
                     >
-                        And I am into
-                        <Box component="span" sx={{ color: 'var(--highlightText)', fontWeight: 600 }}>
+                        AND I AM INTO
+                        <Box component="span" sx={{ color: 'var(--highlightText)', fontWeight: 600, whiteSpace: 'nowrap' }}>
                             <Typewriter
                                 options={{
                                     strings: IntrestedSubjects,
@@ -103,7 +114,7 @@ export default function Hero() {
                         startIcon={<Download />}
                         onClick={handleDownload}
                         sx={{
-                            mt: 4,
+                            mt: 3,
                             backgroundColor: 'var(--highlightText)',
                             color: '#fff',
                             fontWeight: 600,
@@ -111,7 +122,7 @@ export default function Hero() {
                             px: 4,
                             py: 1.5,
                             textTransform: 'none',
-                            fontSize: '1.1rem',
+                            fontSize: { xs: '1rem', md: '1.1rem' },
                             boxShadow: '0 8px 20px rgba(241, 109, 21, 0.3)',
                             transition: 'all 0.3s',
                             '&:hover': {
@@ -124,7 +135,7 @@ export default function Hero() {
                         Download Resume
                     </Button>
 
-                    <Box sx={{ display: 'flex', gap: 3, mt: 4 }}>
+                    <Box sx={{ display: 'flex', gap: { xs: 2, md: 3 }, mt: { xs: 3, md: 4 } }}>
                         {SOCIAL_LINKS.map((data, index) => (
                             <Link
                                 key={index}
@@ -132,7 +143,7 @@ export default function Hero() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 sx={{
-                                    fontSize: '2rem',
+                                    fontSize: { xs: '1.8rem', md: '2rem' },
                                     color: 'var(--text-secondary)',
                                     transition: 'all 0.3s',
                                     '&:hover': {
@@ -157,8 +168,8 @@ export default function Hero() {
                     <Box
                         sx={{
                             position: 'relative',
-                            width: { xs: 250, sm: 300, md: 400 },
-                            height: { xs: 250, sm: 300, md: 400 },
+                            width: { xs: 200, sm: 250, md: 400 },
+                            height: { xs: 200, sm: 250, md: 400 },
                         }}
                     >
                         <Box
