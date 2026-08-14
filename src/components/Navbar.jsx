@@ -60,10 +60,6 @@ export default function Navbar() {
                             offset={-70}
                             duration={500}
                             style={{ cursor: 'pointer', color: 'var(--text-primary)', fontWeight: 500, fontSize: '1rem', textDecoration: 'none', transition: 'color 0.2s' }}
-                            activeClass="active-nav-link"
-                            onSetActive={(to) => {
-                                const elements = document.querySelectorAll(`a[href="#${to}"]`);
-                            }}
                         >
                             <Box sx={{ '&:hover': { color: 'var(--highlightText)' } }}>
                                 {item.name}
