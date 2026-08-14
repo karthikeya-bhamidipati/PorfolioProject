@@ -8,7 +8,7 @@ export default function Terminal() {
         { 
             cmd: '', 
             output: (
-                <Typography sx={{ color: 'var(--highlightText)', mb: 1, fontFamily: '"Fira Code", monospace', fontSize: '0.9rem' }}>
+                <Typography sx={{ color: 'var(--highlightText)', mb: 1, fontFamily: "'Inter', sans-serif", fontSize: '0.95rem' }}>
                     Welcome to Karthikeya's Interactive Terminal v1.0.0
                     <br/>
                     Type 'help' to see available commands.
@@ -20,7 +20,10 @@ export default function Terminal() {
     const bottomRef = useRef(null);
 
     useEffect(() => {
-        bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+        // Only scroll the terminal container, not the entire page!
+        if (bottomRef.current && bottomRef.current.parentNode) {
+            bottomRef.current.parentNode.scrollTop = bottomRef.current.parentNode.scrollHeight;
+        }
     }, [history]);
 
     const handleCommand = (e) => {
@@ -30,7 +33,7 @@ export default function Terminal() {
 
             if (cmd === 'help') {
                 output = (
-                    <Box sx={{ pl: 2, color: 'var(--text-secondary)', fontFamily: '"Fira Code", monospace', fontSize: '0.9rem' }}>
+                    <Box sx={{ pl: 2, color: 'var(--text-secondary)', fontFamily: "'Inter', sans-serif", fontSize: '0.95rem' }}>
                         <div>help    - show this message</div>
                         <div>whoami  - basic details about me</div>
                         <div>skills  - list my technical skills</div>
@@ -41,7 +44,7 @@ export default function Terminal() {
                 );
             } else if (cmd === 'whoami') {
                 output = (
-                    <Box sx={{ pl: 2, color: 'var(--text-secondary)', fontFamily: '"Fira Code", monospace', fontSize: '0.9rem' }}>
+                    <Box sx={{ pl: 2, color: 'var(--text-secondary)', fontFamily: "'Inter', sans-serif", fontSize: '0.95rem' }}>
                         <div>Name: {personal_information.name}</div>
                         <div>Email: {personal_information.email}</div>
                         <div>Phone: {personal_information.phone}</div>
@@ -50,7 +53,7 @@ export default function Terminal() {
                 );
             } else if (cmd === 'skills') {
                 output = (
-                    <Box sx={{ pl: 2, color: 'var(--text-secondary)', fontFamily: '"Fira Code", monospace', fontSize: '0.9rem' }}>
+                    <Box sx={{ pl: 2, color: 'var(--text-secondary)', fontFamily: "'Inter', sans-serif", fontSize: '0.95rem' }}>
                         {Object.entries(skills_and_certifications.skills).map(([cat, skills]) => (
                             <div key={cat}><span style={{color: 'var(--highlightText)'}}>{cat}:</span> {skills.join(', ')}</div>
                         ))}
@@ -58,7 +61,7 @@ export default function Terminal() {
                 );
             } else if (cmd === 'goals') {
                 output = (
-                    <Box sx={{ pl: 2, color: 'var(--text-secondary)', fontFamily: '"Fira Code", monospace', fontSize: '0.9rem' }}>
+                    <Box sx={{ pl: 2, color: 'var(--text-secondary)', fontFamily: "'Inter', sans-serif", fontSize: '0.95rem' }}>
                         <div>Analyzing target fields... Done.</div>
                         <br/>
                         <div>Current Focus Areas:</div>
@@ -75,15 +78,20 @@ export default function Terminal() {
                 return;
             } else if (cmd === 'sudo' || cmd.startsWith('sudo ')) {
                 output = (
-                    <Box sx={{ color: 'error.main', fontFamily: '"Fira Code", monospace', fontSize: '0.9rem' }}>
-                        karthikeya is not in the sudoers file. This incident will be reported.
+                    <Box sx={{ color: 'var(--highlightText)', fontFamily: "'Inter', sans-serif", fontSize: '0.95rem' }}>
+                        <div>[=================================={'>'}] 100%</div>
+                        <div>Security overridden. Root access granted.</div>
+                        <br/>
+                        <div>Fetching highly classified project files... ERROR!</div>
+                        <div>System detects you are an awesome recruiter/collaborator.</div>
+                        <div>To unlock the hidden files, please email me directly or connect on LinkedIn!</div>
                     </Box>
                 );
             } else if (cmd === '') {
                 output = null;
             } else {
                 output = (
-                    <Box sx={{ color: 'var(--text-secondary)', fontFamily: '"Fira Code", monospace', fontSize: '0.9rem' }}>
+                    <Box sx={{ color: 'var(--text-secondary)', fontFamily: "'Inter', sans-serif", fontSize: '0.95rem' }}>
                         Command not found: {cmd}. Type 'help' for a list of commands.
                     </Box>
                 );
@@ -124,7 +132,7 @@ export default function Terminal() {
                 </Box>
                 <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 1 }}>
                     <TerminalIcon sx={{ color: 'var(--text-secondary)', fontSize: '1.2rem' }} />
-                    <Typography sx={{ color: 'var(--text-secondary)', fontSize: '0.9rem', fontFamily: '"Fira Code", monospace' }}>
+                    <Typography sx={{ color: 'var(--text-secondary)', fontSize: '0.9rem', fontFamily: "'Inter', sans-serif", fontWeight: 500 }}>
                         guest@karthikeya:~
                     </Typography>
                 </Box>
@@ -135,7 +143,7 @@ export default function Terminal() {
                 p: 3, 
                 flex: 1,
                 overflowY: 'auto',
-                fontFamily: '"Fira Code", monospace',
+                fontFamily: "'Inter', sans-serif",
                 '&::-webkit-scrollbar': { width: '6px' },
                 '&::-webkit-scrollbar-track': { background: 'transparent' },
                 '&::-webkit-scrollbar-thumb': { background: 'rgba(255,255,255,0.1)', borderRadius: '3px' }
@@ -144,8 +152,8 @@ export default function Terminal() {
                     <Box key={i} sx={{ mb: 2 }}>
                         {entry.cmd && (
                             <Box sx={{ display: 'flex', gap: 1, mb: 1 }}>
-                                <Typography sx={{ color: '#27c93f', fontFamily: 'inherit', fontWeight: 600, fontSize: '0.9rem' }}>guest@karthikeya:~$</Typography>
-                                <Typography sx={{ color: 'var(--text-primary)', fontFamily: 'inherit', fontSize: '0.9rem' }}>{entry.cmd}</Typography>
+                                <Typography sx={{ color: '#27c93f', fontFamily: 'inherit', fontWeight: 600, fontSize: '0.95rem' }}>guest@karthikeya:~$</Typography>
+                                <Typography sx={{ color: 'var(--text-primary)', fontFamily: 'inherit', fontSize: '0.95rem' }}>{entry.cmd}</Typography>
                             </Box>
                         )}
                         {entry.output}
@@ -153,7 +161,7 @@ export default function Terminal() {
                 ))}
                 
                 <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
-                    <Typography sx={{ color: '#27c93f', fontFamily: '"Fira Code", monospace', fontWeight: 600, fontSize: '0.9rem' }}>guest@karthikeya:~$</Typography>
+                    <Typography sx={{ color: '#27c93f', fontFamily: "'Inter', sans-serif", fontWeight: 600, fontSize: '0.95rem' }}>guest@karthikeya:~$</Typography>
                     <InputBase
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
@@ -161,8 +169,8 @@ export default function Terminal() {
                         sx={{ 
                             color: 'var(--text-primary)', 
                             flex: 1, 
-                            fontFamily: '"Fira Code", monospace',
-                            fontSize: '0.9rem',
+                            fontFamily: "'Inter', sans-serif",
+                            fontSize: '0.95rem',
                             '& input': { p: 0 }
                         }}
                     />
