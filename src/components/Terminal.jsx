@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Box, Typography, InputBase } from '@mui/material';
-import { motion } from 'framer-motion';
 import { personal_information, skills_and_certifications, IntrestedSubjects } from '../Utils/masterData';
 import TerminalIcon from '@mui/icons-material/Terminal';
 
@@ -9,7 +8,7 @@ export default function Terminal() {
         { 
             cmd: '', 
             output: (
-                <Typography sx={{ color: 'var(--highlightText)', mb: 1, fontFamily: '"Fira Code", monospace' }}>
+                <Typography sx={{ color: 'var(--highlightText)', mb: 1, fontFamily: '"Fira Code", monospace', fontSize: '0.9rem' }}>
                     Welcome to Karthikeya's Interactive Terminal v1.0.0
                     <br/>
                     Type 'help' to see available commands.
@@ -31,7 +30,7 @@ export default function Terminal() {
 
             if (cmd === 'help') {
                 output = (
-                    <Box sx={{ pl: 2, color: 'var(--text-secondary)', fontFamily: '"Fira Code", monospace' }}>
+                    <Box sx={{ pl: 2, color: 'var(--text-secondary)', fontFamily: '"Fira Code", monospace', fontSize: '0.9rem' }}>
                         <div>help    - show this message</div>
                         <div>whoami  - basic details about me</div>
                         <div>skills  - list my technical skills</div>
@@ -42,7 +41,7 @@ export default function Terminal() {
                 );
             } else if (cmd === 'whoami') {
                 output = (
-                    <Box sx={{ pl: 2, color: 'var(--text-secondary)', fontFamily: '"Fira Code", monospace' }}>
+                    <Box sx={{ pl: 2, color: 'var(--text-secondary)', fontFamily: '"Fira Code", monospace', fontSize: '0.9rem' }}>
                         <div>Name: {personal_information.name}</div>
                         <div>Email: {personal_information.email}</div>
                         <div>Phone: {personal_information.phone}</div>
@@ -51,7 +50,7 @@ export default function Terminal() {
                 );
             } else if (cmd === 'skills') {
                 output = (
-                    <Box sx={{ pl: 2, color: 'var(--text-secondary)', fontFamily: '"Fira Code", monospace' }}>
+                    <Box sx={{ pl: 2, color: 'var(--text-secondary)', fontFamily: '"Fira Code", monospace', fontSize: '0.9rem' }}>
                         {Object.entries(skills_and_certifications.skills).map(([cat, skills]) => (
                             <div key={cat}><span style={{color: 'var(--highlightText)'}}>{cat}:</span> {skills.join(', ')}</div>
                         ))}
@@ -59,7 +58,7 @@ export default function Terminal() {
                 );
             } else if (cmd === 'goals') {
                 output = (
-                    <Box sx={{ pl: 2, color: 'var(--text-secondary)', fontFamily: '"Fira Code", monospace' }}>
+                    <Box sx={{ pl: 2, color: 'var(--text-secondary)', fontFamily: '"Fira Code", monospace', fontSize: '0.9rem' }}>
                         <div>Analyzing target fields... Done.</div>
                         <br/>
                         <div>Current Focus Areas:</div>
@@ -76,7 +75,7 @@ export default function Terminal() {
                 return;
             } else if (cmd === 'sudo' || cmd.startsWith('sudo ')) {
                 output = (
-                    <Box sx={{ color: 'error.main', fontFamily: '"Fira Code", monospace' }}>
+                    <Box sx={{ color: 'error.main', fontFamily: '"Fira Code", monospace', fontSize: '0.9rem' }}>
                         karthikeya is not in the sudoers file. This incident will be reported.
                     </Box>
                 );
@@ -84,7 +83,7 @@ export default function Terminal() {
                 output = null;
             } else {
                 output = (
-                    <Box sx={{ color: 'var(--text-secondary)', fontFamily: '"Fira Code", monospace' }}>
+                    <Box sx={{ color: 'var(--text-secondary)', fontFamily: '"Fira Code", monospace', fontSize: '0.9rem' }}>
                         Command not found: {cmd}. Type 'help' for a list of commands.
                     </Box>
                 );
@@ -96,84 +95,79 @@ export default function Terminal() {
     };
 
     return (
-        <Box id="terminal" component="section" sx={{ padding: { xs: 3, md: 8 }, py: 6, display: 'flex', justifyContent: 'center' }}>
-            <Box
-                component={motion.div}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                sx={{
-                    width: '100%',
-                    maxWidth: 900,
-                    background: 'rgba(10, 10, 10, 0.85)',
-                    backdropFilter: 'blur(20px)',
-                    border: '1px solid var(--glass-border)',
-                    borderRadius: 3,
-                    overflow: 'hidden',
-                    boxShadow: '0 20px 50px rgba(0,0,0,0.5)',
-                }}
-            >
-                {/* Terminal Header */}
-                <Box sx={{ 
-                    background: 'rgba(255, 255, 255, 0.05)', 
-                    p: 1.5, 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    borderBottom: '1px solid var(--glass-border)' 
-                }}>
-                    <Box sx={{ display: 'flex', gap: 1, ml: 1 }}>
-                        <Box sx={{ width: 12, height: 12, borderRadius: '50%', background: '#ff5f56' }} />
-                        <Box sx={{ width: 12, height: 12, borderRadius: '50%', background: '#ffbd2e' }} />
-                        <Box sx={{ width: 12, height: 12, borderRadius: '50%', background: '#27c93f' }} />
-                    </Box>
-                    <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 1 }}>
-                        <TerminalIcon sx={{ color: 'var(--text-secondary)', fontSize: '1.2rem' }} />
-                        <Typography sx={{ color: 'var(--text-secondary)', fontSize: '0.9rem', fontFamily: '"Fira Code", monospace' }}>
-                            guest@karthikeya-portfolio:~
-                        </Typography>
-                    </Box>
+        <Box
+            sx={{
+                width: '100%',
+                background: 'var(--glass-bg)',
+                backdropFilter: 'blur(10px)',
+                border: '1px solid var(--glass-border)',
+                borderRadius: 4,
+                overflow: 'hidden',
+                boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
+                display: 'flex',
+                flexDirection: 'column',
+                height: 400
+            }}
+        >
+            {/* Terminal Header */}
+            <Box sx={{ 
+                background: 'rgba(255, 255, 255, 0.03)', 
+                p: 1.5, 
+                display: 'flex', 
+                alignItems: 'center', 
+                borderBottom: '1px solid var(--glass-border)' 
+            }}>
+                <Box sx={{ display: 'flex', gap: 1, ml: 1 }}>
+                    <Box sx={{ width: 12, height: 12, borderRadius: '50%', background: '#ff5f56' }} />
+                    <Box sx={{ width: 12, height: 12, borderRadius: '50%', background: '#ffbd2e' }} />
+                    <Box sx={{ width: 12, height: 12, borderRadius: '50%', background: '#27c93f' }} />
                 </Box>
+                <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 1 }}>
+                    <TerminalIcon sx={{ color: 'var(--text-secondary)', fontSize: '1.2rem' }} />
+                    <Typography sx={{ color: 'var(--text-secondary)', fontSize: '0.9rem', fontFamily: '"Fira Code", monospace' }}>
+                        guest@karthikeya:~
+                    </Typography>
+                </Box>
+            </Box>
 
-                {/* Terminal Body */}
-                <Box sx={{ 
-                    p: 3, 
-                    height: 400, 
-                    overflowY: 'auto',
-                    fontFamily: '"Fira Code", monospace',
-                    '&::-webkit-scrollbar': { width: '8px' },
-                    '&::-webkit-scrollbar-track': { background: 'transparent' },
-                    '&::-webkit-scrollbar-thumb': { background: 'rgba(255,255,255,0.2)', borderRadius: '4px' }
-                }}>
-                    {history.map((entry, i) => (
-                        <Box key={i} sx={{ mb: 2 }}>
-                            {entry.cmd && (
-                                <Box sx={{ display: 'flex', gap: 1, mb: 1 }}>
-                                    <Typography sx={{ color: '#27c93f', fontFamily: 'inherit', fontWeight: 600 }}>guest@karthikeya:~$</Typography>
-                                    <Typography sx={{ color: 'var(--text-primary)', fontFamily: 'inherit' }}>{entry.cmd}</Typography>
-                                </Box>
-                            )}
-                            {entry.output}
-                        </Box>
-                    ))}
-                    
-                    <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
-                        <Typography sx={{ color: '#27c93f', fontFamily: '"Fira Code", monospace', fontWeight: 600 }}>guest@karthikeya:~$</Typography>
-                        <InputBase
-                            value={input}
-                            onChange={(e) => setInput(e.target.value)}
-                            onKeyDown={handleCommand}
-                            sx={{ 
-                                color: 'var(--text-primary)', 
-                                flex: 1, 
-                                fontFamily: '"Fira Code", monospace',
-                                fontSize: '1rem',
-                                '& input': { p: 0 }
-                            }}
-                        />
+            {/* Terminal Body */}
+            <Box sx={{ 
+                p: 3, 
+                flex: 1,
+                overflowY: 'auto',
+                fontFamily: '"Fira Code", monospace',
+                '&::-webkit-scrollbar': { width: '6px' },
+                '&::-webkit-scrollbar-track': { background: 'transparent' },
+                '&::-webkit-scrollbar-thumb': { background: 'rgba(255,255,255,0.1)', borderRadius: '3px' }
+            }}>
+                {history.map((entry, i) => (
+                    <Box key={i} sx={{ mb: 2 }}>
+                        {entry.cmd && (
+                            <Box sx={{ display: 'flex', gap: 1, mb: 1 }}>
+                                <Typography sx={{ color: '#27c93f', fontFamily: 'inherit', fontWeight: 600, fontSize: '0.9rem' }}>guest@karthikeya:~$</Typography>
+                                <Typography sx={{ color: 'var(--text-primary)', fontFamily: 'inherit', fontSize: '0.9rem' }}>{entry.cmd}</Typography>
+                            </Box>
+                        )}
+                        {entry.output}
                     </Box>
-                    <div ref={bottomRef} />
+                ))}
+                
+                <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+                    <Typography sx={{ color: '#27c93f', fontFamily: '"Fira Code", monospace', fontWeight: 600, fontSize: '0.9rem' }}>guest@karthikeya:~$</Typography>
+                    <InputBase
+                        value={input}
+                        onChange={(e) => setInput(e.target.value)}
+                        onKeyDown={handleCommand}
+                        sx={{ 
+                            color: 'var(--text-primary)', 
+                            flex: 1, 
+                            fontFamily: '"Fira Code", monospace',
+                            fontSize: '0.9rem',
+                            '& input': { p: 0 }
+                        }}
+                    />
                 </Box>
+                <div ref={bottomRef} />
             </Box>
         </Box>
     );

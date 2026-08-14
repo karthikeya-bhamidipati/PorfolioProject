@@ -4,13 +4,13 @@ import { Box } from '@mui/material';
 // importing components
 import Navbar from './Navbar';
 import Hero from './Hero';
-import Terminal from './Terminal';
 import About from './About';
 import Experience from './Experience';
 import Education from './Education';
 import Skills from './Skills';
 import Projects from './Projects';
 import Leadership from './Leadership';
+import CustomCursor from './CustomCursor';
 
 export default function Dashboard() {
     useEffect(() => {
@@ -43,10 +43,10 @@ export default function Dashboard() {
     }, [])
 
     return (
-        <Box sx={{ width: '100%', minHeight: '100vh' }}>
+        <Box sx={{ width: '100%', minHeight: '100vh', cursor: 'none' }}>
+            <CustomCursor />
             <Navbar />
             <Hero />
-            <Terminal />
             <About />
             <Experience />
             <Education />

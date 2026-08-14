@@ -203,6 +203,48 @@ export default function Hero() {
                     </Box>
                 </Box>
             </Box>
+
+            {/* Scroll Indicator Guider */}
+            <Box
+                component={motion.div}
+                animate={{ y: [0, 10, 0] }}
+                transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+                sx={{
+                    position: 'absolute',
+                    bottom: { xs: 20, md: 40 },
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: 1,
+                    opacity: 0.7
+                }}
+            >
+                <Typography sx={{ color: 'var(--text-secondary)', fontSize: '0.8rem', letterSpacing: 2, textTransform: 'uppercase' }}>
+                    Scroll
+                </Typography>
+                <Box sx={{ 
+                    width: 24, 
+                    height: 40, 
+                    border: '2px solid var(--text-secondary)', 
+                    borderRadius: '12px',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    pt: 0.5
+                }}>
+                    <motion.div 
+                        animate={{ y: [0, 12, 0], opacity: [1, 0, 1] }}
+                        transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+                        style={{
+                            width: 4,
+                            height: 6,
+                            backgroundColor: 'var(--highlightText)',
+                            borderRadius: '2px'
+                        }}
+                    />
+                </Box>
+            </Box>
         </Box>
     );
 }
