@@ -1,17 +1,19 @@
-import * as React from 'react'
-import { Box } from '@mui/material'
-
-// importing resources
-import '../resources/css/dashboard.css'
-import '../resources/css/shared.css'
+import React, { useEffect } from 'react';
+import { Box } from '@mui/material';
 
 // importing components
-import Projects from './Projects'
-import Home from './Home'
-import { useEffect } from 'react'
+import Navbar from './Navbar';
+import Hero from './Hero';
+import About from './About';
+import Experience from './Experience';
+import Education from './Education';
+import Skills from './Skills';
+import Projects from './Projects';
+import Leadership from './Leadership';
 
 export default function Dashboard() {
     useEffect(() => {
+        // Keeping original reload logic just in case it's needed
         sessionStorage.setItem('isPageReloaded', 'false')
 
         const handleVisibilityChange = () => {
@@ -40,13 +42,21 @@ export default function Dashboard() {
     }, [])
 
     return (
-        <Box className="HomeContainer">
-            <Box component="main" sx={{ flexGrow: 1 }}>
-                <div className="MainComponent">
-                    <Home />
-                    <Projects />
-                </div>
+        <Box sx={{ width: '100%', minHeight: '100vh' }}>
+            <Navbar />
+            <Hero />
+            <About />
+            <Experience />
+            <Education />
+            <Skills />
+            <Projects />
+            <Leadership />
+            
+            <Box component="footer" sx={{ py: 4, textAlign: 'center', borderTop: '1px solid var(--glass-border)', backgroundColor: 'var(--glass-bg)', backdropFilter: 'blur(10px)' }}>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
+                    © {new Date().getFullYear()} Karthikeya Bhamidipati. Built with React & Framer Motion.
+                </p>
             </Box>
         </Box>
-    )
+    );
 }

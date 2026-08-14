@@ -1,138 +1,96 @@
-import { AvatarGroup, Avatar } from '@mui/material'
-import { Icon } from '@iconify/react'
-import AspectRatio from '@mui/joy/AspectRatio'
-import Card from '@mui/joy/Card'
-import CardContent from '@mui/joy/CardContent'
-import CardOverflow from '@mui/joy/CardOverflow'
-import Typography from '@mui/joy/Typography'
-import '../resources/css/projects.css'
-
-import { PROJECTS_DATA } from '../Utils/Constants'
-import { Link } from '@mui/joy'
+import React from 'react';
+import { Box, Typography, Card, CardContent, CardMedia, Chip, IconButton } from '@mui/material';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import { motion } from 'framer-motion';
+import { projects } from '../Utils/masterData';
 
 export default function Projects() {
     return (
-        <div
-            style={{
-                display: 'flex',
-                gap: '1.5rem',
-                justifyContent: 'center',
-                alignItems: 'center',
-                flexWrap: 'wrap',
-                height: '100%',
-            }}
-        >
-            {PROJECTS_DATA.map((data, index) => (
-                <Card
-                    key={index}
-                    variant="outlined"
-                    sx={{
-                        backgroundColor: 'rgb(256,256,256,0.52)',
-                        backdropFilter: 'blur(5px)',
-                        width: 320,
-                        height: 350,
-                        position: 'relative',
-                        overflow: 'hidden',
-                        transition:
-                            'scale 0.5s ease-in-out, backgroundColor 0.5s ease-in-out',
-                        '&:hover': {
-                            zIndex: 1000,
-                            scale: 1.2,
-                            backgroundColor: 'rgb(256,256,256)',
-                            '&.desc': {
-                                fontWeight: 'bold',
-                            },
-                        },
-                    }}
-                >
-                    <CardOverflow>
-                        <AspectRatio ratio="2">
-                            <img
-                                src={data.image}
-                                alt=""
-                                style={{
-                                    borderRadius: '8px 8px 0 0',
+        <Box id="projects" component="section" sx={{ padding: { xs: 3, md: 8 }, minHeight: '100vh' }}>
+            <Box sx={{ maxWidth: 1200, margin: '0 auto' }}>
+                <Typography variant="h3" sx={{ fontWeight: 700, mb: 6, color: 'var(--highlightText)', textAlign: 'center' }}>
+                    Projects
+                </Typography>
+
+                <Box sx={{
+                    display: 'grid',
+                    gridTemplateColumns: { xs: '1fr', md: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' },
+                    gap: 4
+                }}>
+                    {projects.map((project, index) => (
+                        <Box
+                            key={index}
+                            component={motion.div}
+                            initial={{ opacity: 0, y: 50 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                        >
+                            <Card
+                                sx={{
+                                    height: '100%',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    background: 'var(--glass-bg)',
+                                    backdropFilter: 'blur(10px)',
+                                    border: '1px solid var(--glass-border)',
+                                    borderRadius: 4,
+                                    color: 'var(--text-primary)',
+                                    transition: 'transform 0.3s',
+                                    '&:hover': {
+                                        transform: 'translateY(-10px)',
+                                        border: '1px solid var(--highlightText)',
+                                        boxShadow: '0 10px 30px rgba(241, 109, 21, 0.2)'
+                                    }
                                 }}
-                            />
-                        </AspectRatio>
-                        <AvatarGroup
-                            sx={{
-                                flexDirection: 'row',
-                                '--AvatarGroup-gap': '-16px',
-                                position: 'absolute',
-                                zIndex: 2,
-                                right: 2,
-                                bottom: 2,
-                                transform: 'translateY(50%)',
-                                '& .MuiAvatar-root': {
-                                    border: '.2px solid white',
-                                    boxShadow: '0 2px 5px rgb(0, 0, 0)',
-                                },
-                            }}
-                        >
-                            {data.avatar.map((icon, ind) => (
-                                <Avatar
-                                    key={ind}
-                                    sx={{ backgroundColor: 'white' }}
-                                >
-                                    <Icon
-                                        icon={icon}
-                                        style={{ fontSize: '30px' }}
-                                    />
-                                </Avatar>
-                            ))}
-                        </AvatarGroup>
-                    </CardOverflow>
-                    <CardContent>
-                        <Typography
-                            level="title-md"
-                            sx={{ fontWeight: 'bold', mb: 1 }}
-                        >
-                            {data.name}
-                        </Typography>
-                        <Typography
-                            level="body-sm"
-                            color="text.secondary"
-                            sx={{ display: 'flex', gap: 1 }}
-                        >
-                            {data.links.map((dt, inde) => (
-                                <Link
-                                    key={inde}
-                                    href={dt.link}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    style={{
-                                        fontWeight: 'bold',
-                                        textDecoration: 'none',
-                                        color: 'var(--highlightText)',
-                                    }}
-                                >
-                                    {dt.name}
-                                </Link>
-                            ))}
-                        </Typography>
-                        <Typography
-                            level="body-sm"
-                            className="desc"
-                            sx={{
-                                color: 'black',
-                                maxHeight: '55%',
-                                overflowY: 'auto',
-                                '&::-webkit-scrollbar': {
-                                    width: '0.2rem',
-                                    '&-thumb': {
-                                        backgroundColor: 'var(--highlightText)',
-                                        width: '0.1rem',
-                                        borderRadius: '1rem',
-                                    },
-                                },
-                            }}
-                        >
-                            {data.description}
-                        </Typography>
-                    </CardContent>
-                </Card>
-            ))}
-        </div>
-    )
+                            >
+                                <CardMedia
+                                    component="img"
+                                    height="200"
+                                    image={project.image || 'https://via.placeholder.com/400x200?text=Screenshot+Pending'}
+                                    alt={project.title}
+                                    sx={{ borderBottom: '1px solid var(--glass-border)', filter: project.image ? 'none' : 'grayscale(100%) opacity(0.5)' }}
+                                />
+                                <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+                                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2 }}>
+                                        <Typography variant="h5" sx={{ fontWeight: 600 }}>
+                                            {project.title}
+                                        </Typography>
+                                        <IconButton 
+                                            href={project.link} 
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            sx={{ color: 'var(--text-primary)', '&:hover': { color: 'var(--highlightText)' }, p: 0 }}
+                                        >
+                                            <GitHubIcon />
+                                        </IconButton>
+                                    </Box>
+
+                                    <Typography variant="body2" sx={{ color: 'var(--text-secondary)', mb: 3, flexGrow: 1, lineHeight: 1.6, fontWeight: 300 }}>
+                                        {project.description}
+                                    </Typography>
+
+                                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                                        {project.tech_stack.map((tech, i) => (
+                                            <Chip 
+                                                key={i} 
+                                                label={tech} 
+                                                size="small"
+                                                sx={{ 
+                                                    backgroundColor: 'rgba(255,255,255,0.1)', 
+                                                    color: 'var(--highlightText)',
+                                                    border: '1px solid rgba(241, 109, 21, 0.3)',
+                                                    fontWeight: 500
+                                                }} 
+                                            />
+                                        ))}
+                                    </Box>
+                                </CardContent>
+                            </Card>
+                        </Box>
+                    ))}
+                </Box>
+            </Box>
+        </Box>
+    );
 }

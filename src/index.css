@@ -1,9 +1,44 @@
+:root {
+    --highlightText: rgb(241, 109, 21);
+    --bg-overlay: rgba(0, 0, 0, 0.75);
+    --glass-bg: rgba(36, 36, 36, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3b3;
+}
+
 * {
     margin: 0;
-    font-family: Arial, Helvetica;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background-image: linear-gradient(var(--bg-overlay), var(--bg-overlay)), url('./resources/images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    color: var(--text-primary);
+    overflow-x: hidden;
+}
+
 ::-webkit-scrollbar {
-    width: 0;
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--highlightText);
+    border-radius: 4px;
 }
