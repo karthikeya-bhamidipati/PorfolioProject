@@ -62,7 +62,7 @@ export default function Hero() {
                     flexDirection: { xs: 'column-reverse', md: 'row' },
                     alignItems: 'center',
                     justifyContent: 'space-between',
-                    gap: { xs: 4, md: 8 },
+                    gap: { xs: 6, md: 12 },
                     width: '100%',
                     maxWidth: 1200,
                 }}
@@ -246,25 +246,29 @@ export default function Hero() {
 
             {/* Scroll Indicator Guider */}
             <Box
-                component={motion.div}
-                animate={{ y: [0, 10, 0] }}
-                transition={{
-                    repeat: Infinity,
-                    duration: 1.5,
-                    ease: 'easeInOut',
-                }}
                 sx={{
                     position: 'absolute',
                     bottom: { xs: 20, md: 40 },
                     left: '50%',
                     transform: 'translateX(-50%)',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    gap: 1,
-                    opacity: 0.7,
                 }}
             >
+                <Box
+                    component={motion.div}
+                    animate={{ y: [0, 10, 0] }}
+                    transition={{
+                        repeat: Infinity,
+                        duration: 1.5,
+                        ease: 'easeInOut',
+                    }}
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        gap: 1,
+                        opacity: 0.7,
+                    }}
+                >
                 <Typography
                     sx={{
                         color: 'var(--text-secondary)',
@@ -300,6 +304,7 @@ export default function Hero() {
                             borderRadius: '2px',
                         }}
                     />
+                </Box>
                 </Box>
             </Box>
         </Box>

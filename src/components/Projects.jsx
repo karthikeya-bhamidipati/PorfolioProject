@@ -1,5 +1,5 @@
-import React from 'react';
-import { Box, Typography, Card, CardContent, CardMedia, Chip, IconButton } from '@mui/material';
+import React, { useState } from 'react';
+import { Box, Typography, Card, CardContent, CardMedia, Chip, IconButton, Dialog } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { motion } from 'framer-motion';
 import { Icon } from '@iconify/react';
@@ -7,6 +7,8 @@ import Tilt from 'react-parallax-tilt';
 import { projects } from '../Utils/masterData';
 
 export default function Projects() {
+    const [openImage, setOpenImage] = useState(null);
+
     return (
         <Box id="projects" component="section" sx={{ padding: { xs: 3, md: 8 }, minHeight: '100vh' }}>
             <Box sx={{ maxWidth: 1200, margin: '0 auto' }}>
@@ -52,7 +54,8 @@ export default function Projects() {
                                     height="200"
                                     image={project.image || 'https://via.placeholder.com/400x200?text=Screenshot+Pending'}
                                     alt={project.title}
-                                    sx={{ borderBottom: '1px solid var(--glass-border)' }}
+                                    onClick={() => setOpenImage(project.image)}
+                                    sx={{ borderBottom: '1px solid var(--glass-border)', cursor: 'pointer', '&:hover': { opacity: 0.8 } }}
                                 />
                                 <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
                                     <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2 }}>
@@ -69,11 +72,22 @@ export default function Projects() {
                                         </IconButton>
                                     </Box>
 
-                                    {/* Render Iconify Avatars */}
+                                    {/* Render Iconify Avatars with Background */}
                                     {project.avatar && project.avatar.length > 0 && (
                                         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1.5, mb: 2, alignItems: 'center' }}>
                                             {project.avatar.map((av, i) => (
-                                                <Icon key={i} icon={av} width="24" height="24" color="var(--text-secondary)" />
+                                                <Box key={i} sx={{ 
+                                                    backgroundColor: 'rgba(255,255,255,0.9)', 
+                                                    borderRadius: '50%', 
+                                                    width: 32, 
+                                                    height: 32, 
+                                                    display: 'flex', 
+                                                    alignItems: 'center', 
+                                                    justifyContent: 'center',
+                                                    boxShadow: '0 2px 10px rgba(0,0,0,0.2)'
+                                                }}>
+                                                    <Icon icon={av} width="20" height="20" />
+                                                </Box>
                                             ))}
                                         </Box>
                                     )}
@@ -103,6 +117,36 @@ export default function Projects() {
                         </Box>
                     ))}
                 </Box>
+
+                {/* Image Lightbox Modal */}
+                <Dialog 
+                    open={Boolean(openImage)} 
+                    onClose={() => setOpenImage(null)}
+                    maxWidth="lg"
+                    PaperProps={{
+                        sx: {
+                            backgroundColor: 'transparent',
+                            boxShadow: 'none',
+                            overflow: 'hidden'
+                        }
+                    }}
+                >
+                    {openImage && (
+                        <Box
+                            component="img"
+                            src={openImage}
+                            alt="Project Full View"
+                            sx={{
+                                width: '100%',
+                                maxHeight: '90vh',
+                                objectFit: 'contain',
+                                borderRadius: 2,
+                                backgroundColor: 'rgba(0,0,0,0.8)',
+                                backdropFilter: 'blur(10px)'
+                            }}
+                        />
+                    )}
+                </Dialog>
             </Box>
         </Box>
     );
