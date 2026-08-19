@@ -1,7 +1,6 @@
 import React from 'react';
 import { Box, Typography, Avatar } from '@mui/material';
 import { motion } from 'framer-motion';
-import { personal_information } from '../Utils/masterData';
 
 export default function Loader() {
     // Generate random geometry
