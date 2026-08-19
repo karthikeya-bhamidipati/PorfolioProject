@@ -1,28 +1,46 @@
-import React from 'react';
-import { Box, Typography, Button, Avatar, Link } from '@mui/material';
-import { Download } from '@mui/icons-material';
-import Typewriter from 'typewriter-effect';
-import { motion } from 'framer-motion';
-import { personal_information, IntrestedSubjects } from '../Utils/masterData';
-import { FacebookRounded, GitHub, Instagram, LinkedIn, Mail } from '@mui/icons-material';
+import React from 'react'
+import { Box, Typography, Button, Avatar, Link } from '@mui/material'
+import { Download } from '@mui/icons-material'
+import Typewriter from 'typewriter-effect'
+import { motion } from 'framer-motion'
+import { personal_information, IntrestedSubjects } from '../Utils/masterData'
+import {
+    FacebookRounded,
+    GitHub,
+    Instagram,
+    LinkedIn,
+    Mail,
+} from '@mui/icons-material'
 
 const SOCIAL_LINKS = [
-    { icon: <Instagram fontSize="inherit" />, link: 'https://www.instagram.com/karthikeya_bhamidipati/' },
-    { icon: <FacebookRounded fontSize="inherit" />, link: 'https://www.facebook.com/karthikeya.bhamidipati.005/' },
-    { icon: <LinkedIn fontSize="inherit" />, link: personal_information.linkedin },
+    {
+        icon: <Instagram fontSize="inherit" />,
+        link: 'https://www.instagram.com/karthikeya_bhamidipati/',
+    },
+    {
+        icon: <FacebookRounded fontSize="inherit" />,
+        link: 'https://www.facebook.com/karthikeya.bhamidipati.005/',
+    },
+    {
+        icon: <LinkedIn fontSize="inherit" />,
+        link: personal_information.linkedin,
+    },
     { icon: <GitHub fontSize="inherit" />, link: personal_information.github },
-    { icon: <Mail fontSize="inherit" />, link: `mailto:${personal_information.email}` },
-];
+    {
+        icon: <Mail fontSize="inherit" />,
+        link: `mailto:${personal_information.email}`,
+    },
+]
 
 export default function Hero() {
     const handleDownload = () => {
-        const link = document.createElement('a');
-        link.href = `${process.env.PUBLIC_URL}/Karthikeya_Bhamidipati_Resume.pdf`;
-        link.download = 'Karthikeya_Bhamidipati_Resume.pdf';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    };
+        const link = document.createElement('a')
+        link.href = `${process.env.PUBLIC_URL}/Karthikeya_Bhamidipati_Resume.pdf`
+        link.download = 'Karthikeya_Bhamidipati_Resume.pdf'
+        document.body.appendChild(link)
+        link.click()
+        document.body.removeChild(link)
+    }
 
     return (
         <Box
@@ -35,7 +53,7 @@ export default function Hero() {
                 alignItems: 'center',
                 padding: { xs: 2, md: 8 },
                 pt: { xs: 12, md: 10 },
-                overflow: 'hidden'
+                overflow: 'hidden',
             }}
         >
             <Box
@@ -61,20 +79,33 @@ export default function Hero() {
                         textAlign: { xs: 'center', md: 'left' },
                         gap: 2,
                         flex: 1,
-                        width: '100%'
+                        width: '100%',
                     }}
                 >
-                    <Typography variant="h6" sx={{ color: 'var(--text-secondary)', fontWeight: 500, letterSpacing: 3, fontSize: { xs: '1.2rem', md: '1.5rem' } }}>
+                    <Typography
+                        variant="h6"
+                        sx={{
+                            color: 'var(--text-secondary)',
+                            fontWeight: 500,
+                            letterSpacing: 3,
+                            fontSize: { xs: '1.2rem', md: '1.5rem' },
+                        }}
+                    >
                         HELLO THERE, I AM
                     </Typography>
-                    
+
                     <Typography
                         variant="h2"
                         sx={{
-                            fontSize: { xs: '2.2rem', sm: '3.5rem', md: '4.5rem' },
+                            fontSize: {
+                                xs: '2.2rem',
+                                sm: '3.5rem',
+                                md: '4.5rem',
+                            },
                             fontWeight: 800,
                             lineHeight: 1.1,
-                            background: 'linear-gradient(45deg, #fff, var(--highlightText))',
+                            background:
+                                'linear-gradient(45deg, #fff, var(--highlightText))',
                             WebkitBackgroundClip: 'text',
                             WebkitTextFillColor: 'transparent',
                         }}
@@ -83,35 +114,37 @@ export default function Hero() {
                     </Typography>
 
                     <Typography
-                        variant="h5"
-                        sx={{ 
-                            fontSize: { xs: '1.1rem', sm: '1.5rem', md: '2rem' }, 
-                            fontWeight: 400, 
-                            mt: 1, 
-                            display: 'flex', 
-                            flexWrap: { xs: 'wrap', md: 'nowrap' }, 
-                            justifyContent: {xs: 'center', md: 'flex-start'}, 
-                            alignItems: 'center',
-                            gap: 1,
-                            width: '100%'
+                        variant="h6"
+                        sx={{
+                            color: 'var(--text-secondary)',
+                            fontWeight: 500,
+                            letterSpacing: 3,
+                            fontSize: { xs: '1.2rem', md: '1.5rem' },
                         }}
                     >
                         AND I AM INTO
-                        <Box component="span" sx={{ 
-                            color: 'var(--highlightText)', 
-                            fontWeight: 600, 
-                            whiteSpace: 'nowrap',
-                            display: 'inline-block',
-                            minWidth: { xs: '200px', sm: '300px', md: '400px' }, // Fixed width prevents layout shift
-                            textAlign: 'left'
-                        }}>
+                        <Box
+                            component="span"
+                            sx={{
+                                color: 'var(--highlightText)',
+                                fontWeight: 600,
+                                whiteSpace: 'nowrap',
+                                display: 'inline-block',
+                                minWidth: {
+                                    xs: '200px',
+                                    sm: '300px',
+                                    md: '400px',
+                                }, // Fixed width prevents layout shift
+                                textAlign: 'left',
+                            }}
+                        >
                             <Typewriter
                                 options={{
                                     strings: IntrestedSubjects,
                                     autoStart: true,
                                     loop: true,
                                     deleteSpeed: 50,
-                                    delay: 80
+                                    delay: 80,
                                 }}
                             />
                         </Box>
@@ -136,14 +169,21 @@ export default function Hero() {
                             '&:hover': {
                                 backgroundColor: '#d15d11',
                                 transform: 'translateY(-3px)',
-                                boxShadow: '0 12px 25px rgba(241, 109, 21, 0.4)',
+                                boxShadow:
+                                    '0 12px 25px rgba(241, 109, 21, 0.4)',
                             },
                         }}
                     >
                         Download Resume
                     </Button>
 
-                    <Box sx={{ display: 'flex', gap: { xs: 2, md: 3 }, mt: { xs: 3, md: 4 } }}>
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            gap: { xs: 2, md: 3 },
+                            mt: { xs: 3, md: 4 },
+                        }}
+                    >
                         {SOCIAL_LINKS.map((data, index) => (
                             <Link
                                 key={index}
@@ -208,7 +248,11 @@ export default function Hero() {
             <Box
                 component={motion.div}
                 animate={{ y: [0, 10, 0] }}
-                transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+                transition={{
+                    repeat: Infinity,
+                    duration: 1.5,
+                    ease: 'easeInOut',
+                }}
                 sx={{
                     position: 'absolute',
                     bottom: { xs: 20, md: 40 },
@@ -218,33 +262,46 @@ export default function Hero() {
                     flexDirection: 'column',
                     alignItems: 'center',
                     gap: 1,
-                    opacity: 0.7
+                    opacity: 0.7,
                 }}
             >
-                <Typography sx={{ color: 'var(--text-secondary)', fontSize: '0.8rem', letterSpacing: 2, textTransform: 'uppercase' }}>
+                <Typography
+                    sx={{
+                        color: 'var(--text-secondary)',
+                        fontSize: '0.8rem',
+                        letterSpacing: 2,
+                        textTransform: 'uppercase',
+                    }}
+                >
                     Scroll
                 </Typography>
-                <Box sx={{ 
-                    width: 24, 
-                    height: 40, 
-                    border: '2px solid var(--text-secondary)', 
-                    borderRadius: '12px',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    pt: 0.5
-                }}>
-                    <motion.div 
+                <Box
+                    sx={{
+                        width: 24,
+                        height: 40,
+                        border: '2px solid var(--text-secondary)',
+                        borderRadius: '12px',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        pt: 0.5,
+                    }}
+                >
+                    <motion.div
                         animate={{ y: [0, 12, 0], opacity: [1, 0, 1] }}
-                        transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+                        transition={{
+                            repeat: Infinity,
+                            duration: 1.5,
+                            ease: 'easeInOut',
+                        }}
                         style={{
                             width: 4,
                             height: 6,
                             backgroundColor: 'var(--highlightText)',
-                            borderRadius: '2px'
+                            borderRadius: '2px',
                         }}
                     />
                 </Box>
             </Box>
         </Box>
-    );
+    )
 }

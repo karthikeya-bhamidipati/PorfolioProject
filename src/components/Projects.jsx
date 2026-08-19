@@ -3,6 +3,7 @@ import { Box, Typography, Card, CardContent, CardMedia, Chip, IconButton } from 
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { motion } from 'framer-motion';
 import { Icon } from '@iconify/react';
+import Tilt from 'react-parallax-tilt';
 import { projects } from '../Utils/masterData';
 
 export default function Projects() {
@@ -27,7 +28,8 @@ export default function Projects() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                         >
-                            <Card
+                            <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5} scale={1.02} transitionSpeed={2500} style={{ height: '100%' }}>
+                                <Card
                                 sx={{
                                     height: '100%',
                                     display: 'flex',
@@ -97,6 +99,7 @@ export default function Projects() {
                                     </Box>
                                 </CardContent>
                             </Card>
+                            </Tilt>
                         </Box>
                     ))}
                 </Box>
