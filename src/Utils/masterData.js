@@ -1,7 +1,7 @@
 // masterData.js
 // Combining new master data JSON and detailed existing constants
 
-import defaultImage from '../resources/images/userImage.jpg'
+import defaultImage from '../resources/images/userImage.png'
 import Project1 from '../resources/images/projects/project1.png'
 import Project2 from '../resources/images/projects/project2.png'
 import Project3 from '../resources/images/projects/project3.png'
