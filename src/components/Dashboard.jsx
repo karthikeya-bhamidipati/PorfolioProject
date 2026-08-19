@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Box } from '@mui/material';
+import { motion, useScroll } from 'framer-motion';
 
 // importing components
 import Navbar from './Navbar';
@@ -13,6 +14,8 @@ import Leadership from './Leadership';
 import CustomCursor from './CustomCursor';
 
 export default function Dashboard() {
+    const { scrollYProgress } = useScroll();
+
     useEffect(() => {
         // Keeping original reload logic just in case it's needed
         sessionStorage.setItem('isPageReloaded', 'false')
@@ -44,6 +47,20 @@ export default function Dashboard() {
 
     return (
         <Box sx={{ width: '100%', minHeight: '100vh', cursor: 'none' }}>
+            <motion.div
+                style={{
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    height: '4px',
+                    background: 'var(--highlightText)',
+                    transformOrigin: '0%',
+                    scaleX: scrollYProgress,
+                    zIndex: 10000,
+                    boxShadow: '0 0 10px var(--highlightText)'
+                }}
+            />
             <CustomCursor />
             <Navbar />
             <Hero />
