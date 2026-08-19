@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
-import './App.css'
 import Dashboard from './components/Dashboard'
 import Loader from './components/Loader'
 import { projects, education, personal_information } from './Utils/masterData'
