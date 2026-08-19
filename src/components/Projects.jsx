@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Typography, Card, CardContent, CardMedia, Chip, IconButton } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { motion } from 'framer-motion';
+import { Icon } from '@iconify/react';
 import { projects } from '../Utils/masterData';
 
 export default function Projects() {
@@ -49,7 +50,7 @@ export default function Projects() {
                                     height="200"
                                     image={project.image || 'https://via.placeholder.com/400x200?text=Screenshot+Pending'}
                                     alt={project.title}
-                                    sx={{ borderBottom: '1px solid var(--glass-border)', filter: project.image ? 'none' : 'grayscale(100%) opacity(0.5)' }}
+                                    sx={{ borderBottom: '1px solid var(--glass-border)' }}
                                 />
                                 <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
                                     <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2 }}>
@@ -66,6 +67,15 @@ export default function Projects() {
                                         </IconButton>
                                     </Box>
 
+                                    {/* Render Iconify Avatars */}
+                                    {project.avatar && project.avatar.length > 0 && (
+                                        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1.5, mb: 2, alignItems: 'center' }}>
+                                            {project.avatar.map((av, i) => (
+                                                <Icon key={i} icon={av} width="24" height="24" color="var(--text-secondary)" />
+                                            ))}
+                                        </Box>
+                                    )}
+
                                     <Typography variant="body2" sx={{ color: 'var(--text-secondary)', mb: 3, flexGrow: 1, lineHeight: 1.6, fontWeight: 300 }}>
                                         {project.description}
                                     </Typography>
@@ -77,7 +87,7 @@ export default function Projects() {
                                                 label={tech} 
                                                 size="small"
                                                 sx={{ 
-                                                    backgroundColor: 'rgba(255,255,255,0.1)', 
+                                                    backgroundColor: 'rgba(255,255,255,0.05)', 
                                                     color: 'var(--highlightText)',
                                                     border: '1px solid rgba(241, 109, 21, 0.3)',
                                                     fontWeight: 500

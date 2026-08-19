@@ -1,19 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 export default function CustomCursor() {
-    const [mousePosition, setMousePosition] = useState({
-        x: 0,
-        y: 0
-    });
+    // Bypassing React state for mouse position completely eliminates lag!
+    const cursorX = useMotionValue(-100);
+    const cursorY = useMotionValue(-100);
+    
+    // Very tight spring physics
+    const springConfigOuter = { damping: 25, stiffness: 800, mass: 0.1 };
+    const springConfigInner = { damping: 20, stiffness: 1200, mass: 0.05 };
+    
+    const outerX = useSpring(cursorX, springConfigOuter);
+    const outerY = useSpring(cursorY, springConfigOuter);
+    const innerX = useSpring(cursorX, springConfigInner);
+    const innerY = useSpring(cursorY, springConfigInner);
+
     const [isHovering, setIsHovering] = useState(false);
 
     useEffect(() => {
         const updateMousePosition = (e) => {
-            setMousePosition({
-                x: e.clientX,
-                y: e.clientY
-            });
+            cursorX.set(e.clientX);
+            cursorY.set(e.clientY);
         };
 
         const handleMouseOver = (e) => {
@@ -31,7 +38,7 @@ export default function CustomCursor() {
             window.removeEventListener('mousemove', updateMousePosition);
             window.removeEventListener('mouseover', handleMouseOver);
         };
-    }, []);
+    }, [cursorX, cursorY]);
 
     return (
         <>
@@ -46,19 +53,15 @@ export default function CustomCursor() {
                     border: '2px solid var(--highlightText)',
                     pointerEvents: 'none',
                     zIndex: 9999,
-                    mixBlendMode: 'difference'
+                    mixBlendMode: 'difference',
+                    x: outerX,
+                    y: outerY,
+                    translateX: '-50%',
+                    translateY: '-50%',
                 }}
                 animate={{
-                    x: mousePosition.x - 15,
-                    y: mousePosition.y - 15,
                     scale: isHovering ? 1.5 : 1,
                     backgroundColor: isHovering ? 'var(--highlightText)' : 'transparent',
-                }}
-                transition={{
-                    type: 'spring',
-                    stiffness: 800,
-                    damping: 35,
-                    mass: 0.1
                 }}
             />
             <motion.div
@@ -72,16 +75,10 @@ export default function CustomCursor() {
                     backgroundColor: 'var(--highlightText)',
                     pointerEvents: 'none',
                     zIndex: 10000,
-                }}
-                animate={{
-                    x: mousePosition.x - 4,
-                    y: mousePosition.y - 4,
-                }}
-                transition={{
-                    type: 'spring',
-                    stiffness: 1500,
-                    damping: 30,
-                    mass: 0.05
+                    x: innerX,
+                    y: innerY,
+                    translateX: '-50%',
+                    translateY: '-50%',
                 }}
             />
         </>

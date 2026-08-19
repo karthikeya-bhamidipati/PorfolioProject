@@ -152,7 +152,7 @@ export default function Terminal() {
                     <Box key={i} sx={{ mb: 2 }}>
                         {entry.cmd && (
                             <Box sx={{ display: 'flex', gap: 1, mb: 1 }}>
-                                <Typography sx={{ color: '#27c93f', fontFamily: 'inherit', fontWeight: 600, fontSize: '0.95rem' }}>guest@karthikeya:~$</Typography>
+                                <Typography sx={{ color: 'var(--highlightText)', fontFamily: 'inherit', fontWeight: 600, fontSize: '0.95rem' }}>guest@karthikeya:~$</Typography>
                                 <Typography sx={{ color: 'var(--text-primary)', fontFamily: 'inherit', fontSize: '0.95rem' }}>{entry.cmd}</Typography>
                             </Box>
                         )}
@@ -161,7 +161,7 @@ export default function Terminal() {
                 ))}
                 
                 <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
-                    <Typography sx={{ color: '#27c93f', fontFamily: "'Inter', sans-serif", fontWeight: 600, fontSize: '0.95rem' }}>guest@karthikeya:~$</Typography>
+                    <Typography sx={{ color: 'var(--highlightText)', fontFamily: "'Inter', sans-serif", fontWeight: 600, fontSize: '0.95rem' }}>guest@karthikeya:~$</Typography>
                     <InputBase
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
