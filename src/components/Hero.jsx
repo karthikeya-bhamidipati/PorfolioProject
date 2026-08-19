@@ -2,6 +2,7 @@ import React from 'react'
 import { Box, Typography, Button, Avatar, Link } from '@mui/material'
 import { Download } from '@mui/icons-material'
 import Typewriter from 'typewriter-effect'
+import Tilt from 'react-parallax-tilt';
 import { motion } from 'framer-motion'
 import { personal_information, IntrestedSubjects } from '../Utils/masterData'
 import {
@@ -62,7 +63,7 @@ export default function Hero() {
                     flexDirection: { xs: 'column-reverse', md: 'row' },
                     alignItems: 'center',
                     justifyContent: 'space-between',
-                    gap: { xs: 6, md: 12 },
+                    gap: { xs: 8, md: 20 },
                     width: '100%',
                     maxWidth: 1200,
                 }}
@@ -130,12 +131,13 @@ export default function Hero() {
                                 fontWeight: 600,
                                 whiteSpace: 'nowrap',
                                 display: 'inline-block',
-                                minWidth: {
-                                    xs: '200px',
-                                    sm: '300px',
-                                    md: '400px',
-                                }, // Fixed width prevents layout shift
+                                width: {
+                                    xs: '250px',
+                                    sm: '350px',
+                                    md: '500px',
+                                }, // Strict fixed width prevents layout shift when typing long words
                                 textAlign: 'left',
+                                ml: 1 // Add a tiny margin between "INTO" and the typewriter text
                             }}
                         >
                             <Typewriter
@@ -230,6 +232,7 @@ export default function Hero() {
                                 opacity: 0.5,
                             }}
                         />
+                        <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5} scale={1.02} transitionSpeed={2500} style={{ height: '100%' }}>
                         <Avatar
                             alt={personal_information.name}
                             src={personal_information.photo}
@@ -239,7 +242,8 @@ export default function Hero() {
                                 border: '4px solid var(--highlightText)',
                                 boxShadow: '0 0 30px rgba(241, 109, 21, 0.2)',
                             }}
-                        />
+                            />
+                        </Tilt>
                     </Box>
                 </Box>
             </Box>
