@@ -16,32 +16,57 @@ export default function CustomCursor() {
     const innerY = useSpring(cursorY, springConfigInner);
 
     const [isHovering, setIsHovering] = useState(false);
+    const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
+        let timeout;
+
         const updateMousePosition = (e) => {
             cursorX.set(e.clientX);
             cursorY.set(e.clientY);
+            
+            if (!isVisible) setIsVisible(true);
+            
+            // Clear existing timeout
+            clearTimeout(timeout);
+            // Hide cursor after 2.5 seconds of no movement
+            timeout = setTimeout(() => {
+                setIsVisible(false);
+            }, 2500);
         };
 
         const handleMouseOver = (e) => {
-            const tag = e.target.tagName.toLowerCase();
+            const tag = e.target.tagName?.toLowerCase();
             const isClickable = ['a', 'button', 'input', 'textarea', 'select'].includes(tag) || 
                                 e.target.closest('a') || 
                                 e.target.closest('button');
             setIsHovering(!!isClickable);
         };
 
+        const handleMouseLeave = () => {
+            setIsVisible(false);
+        };
+
+        const handleMouseEnter = () => {
+            setIsVisible(true);
+        };
+
         window.addEventListener('mousemove', updateMousePosition);
         window.addEventListener('mouseover', handleMouseOver);
+        document.addEventListener('mouseleave', handleMouseLeave);
+        document.addEventListener('mouseenter', handleMouseEnter);
 
         return () => {
             window.removeEventListener('mousemove', updateMousePosition);
             window.removeEventListener('mouseover', handleMouseOver);
+            document.removeEventListener('mouseleave', handleMouseLeave);
+            document.removeEventListener('mouseenter', handleMouseEnter);
+            clearTimeout(timeout);
         };
-    }, [cursorX, cursorY]);
+    }, [cursorX, cursorY, isVisible]);
 
     return (
-        <>
+        <div style={{ opacity: isVisible ? 1 : 0, transition: 'opacity 0.4s ease' }}>
             <motion.div
                 style={{
                     position: 'fixed',
@@ -81,6 +106,6 @@ export default function CustomCursor() {
                     translateY: '-50%',
                 }}
             />
-        </>
+        </div>
     );
 }
