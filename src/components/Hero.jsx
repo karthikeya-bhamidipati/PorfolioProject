@@ -2,7 +2,7 @@ import React from 'react'
 import { Box, Typography, Button, Avatar, Link } from '@mui/material'
 import { Download } from '@mui/icons-material'
 import Typewriter from 'typewriter-effect'
-import Tilt from 'react-parallax-tilt';
+import Tilt from 'react-parallax-tilt'
 import { motion } from 'framer-motion'
 import { personal_information, IntrestedSubjects } from '../Utils/masterData'
 import {
@@ -137,7 +137,7 @@ export default function Hero() {
                                     md: '500px',
                                 }, // Strict fixed width prevents layout shift when typing long words
                                 textAlign: 'left',
-                                ml: 1 // Add a tiny margin between "INTO" and the typewriter text
+                                ml: 1, // Add a tiny margin between "INTO" and the typewriter text
                             }}
                         >
                             <Typewriter
@@ -213,13 +213,21 @@ export default function Hero() {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.8 }}
-                    sx={{ flex: 1, display: 'flex', justifyContent: 'center' }}
+                    sx={{
+                        flex: 1,
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                    }}
                 >
                     <Box
                         sx={{
                             position: 'relative',
                             width: { xs: 200, sm: 250, md: 400 },
                             height: { xs: 200, sm: 250, md: 400 },
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
                         }}
                     >
                         <Box
@@ -230,19 +238,36 @@ export default function Hero() {
                                 border: '2px solid var(--highlightText)',
                                 filter: 'blur(10px)',
                                 opacity: 0.5,
+                                zIndex: 0,
                             }}
                         />
-                        <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5} scale={1.02} transitionSpeed={2500} style={{ height: '100%' }}>
-                        <Avatar
-                            alt={personal_information.name}
-                            src={personal_information.photo}
-                            sx={{
-                                width: '100%',
+                        <Tilt
+                            tiltMaxAngleX={5}
+                            tiltMaxAngleY={5}
+                            scale={1.02}
+                            transitionSpeed={2500}
+                            style={{
                                 height: '100%',
-                                transform: 'translateY(3rem)',
-                                border: '4px solid var(--highlightText)',
-                                boxShadow: '0 0 30px rgba(241, 109, 21, 0.2)',
+                                width: '100%',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                position: 'relative',
+                                zIndex: 1,
                             }}
+                        >
+                            <Avatar
+                                alt={personal_information.name}
+                                src={personal_information.photo}
+                                sx={{
+                                    width: '100%',
+                                    height: '100%',
+                                    border: '4px solid var(--highlightText)',
+                                    boxShadow:
+                                        '0 0 30px rgba(241, 109, 21, 0.2)',
+                                    position: 'relative',
+                                    zIndex: 2,
+                                }}
                             />
                         </Tilt>
                     </Box>
@@ -274,42 +299,42 @@ export default function Hero() {
                         opacity: 0.7,
                     }}
                 >
-                <Typography
-                    sx={{
-                        color: 'var(--text-secondary)',
-                        fontSize: '0.8rem',
-                        letterSpacing: 2,
-                        textTransform: 'uppercase',
-                    }}
-                >
-                    Scroll
-                </Typography>
-                <Box
-                    sx={{
-                        width: 24,
-                        height: 40,
-                        border: '2px solid var(--text-secondary)',
-                        borderRadius: '12px',
-                        display: 'flex',
-                        justifyContent: 'center',
-                        pt: 0.5,
-                    }}
-                >
-                    <motion.div
-                        animate={{ y: [0, 12, 0], opacity: [1, 0, 1] }}
-                        transition={{
-                            repeat: Infinity,
-                            duration: 1.5,
-                            ease: 'easeInOut',
+                    <Typography
+                        sx={{
+                            color: 'var(--text-secondary)',
+                            fontSize: '0.8rem',
+                            letterSpacing: 2,
+                            textTransform: 'uppercase',
                         }}
-                        style={{
-                            width: 4,
-                            height: 6,
-                            backgroundColor: 'var(--highlightText)',
-                            borderRadius: '2px',
+                    >
+                        Scroll
+                    </Typography>
+                    <Box
+                        sx={{
+                            width: 24,
+                            height: 40,
+                            border: '2px solid var(--text-secondary)',
+                            borderRadius: '12px',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            pt: 0.5,
                         }}
-                    />
-                </Box>
+                    >
+                        <motion.div
+                            animate={{ y: [0, 12, 0], opacity: [1, 0, 1] }}
+                            transition={{
+                                repeat: Infinity,
+                                duration: 1.5,
+                                ease: 'easeInOut',
+                            }}
+                            style={{
+                                width: 4,
+                                height: 6,
+                                backgroundColor: 'var(--highlightText)',
+                                borderRadius: '2px',
+                            }}
+                        />
+                    </Box>
                 </Box>
             </Box>
         </Box>
