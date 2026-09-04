@@ -239,6 +239,7 @@ export default function Hero() {
                             sx={{
                                 width: '100%',
                                 height: '100%',
+                                transform: 'translateY(1.3rem)',
                                 border: '4px solid var(--highlightText)',
                                 boxShadow: '0 0 30px rgba(241, 109, 21, 0.2)',
                             }}
